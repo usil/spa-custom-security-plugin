@@ -23,7 +23,7 @@ So for SPA project `package.json` will have:
 Then create a `server-settings.json` file (if it is not created already) and inside it put:
 
 ```json
-  "plugins": [{ "module": "usil-oauth" }],
+  "plugins": [{ "module": "server-settings.json" }],
 ```
 
 ## Adding variables to the server settings file
@@ -82,12 +82,26 @@ SECURITY_OAUTH2_MAX_SECONDS_ALLOWED_FOR_IDLE_USER=1000
 
 ## Added end-points for oauth2
 
-| Endpoint       | Method | Description         |
-| -------------- | ------ | ------------------- |
-| /oauth2/logout | GET    | Closes the session  |
-| /oauth2/login  | GET    | Creates the session |
+| Endpoint        | Method | Description                     |
+| --------------- | ------ | ------------------------------- |
+| /oauth2/logout  | GET    | Closes the session              |
+| /oauth2/login   | GET    | Creates the session             |
+| /oauth2/ping    | GET    | Updates the idle time           |
+| /oauth2/refresh | POST   | Refresh the authorization token |
 
-To use them use redirect, the login endpoint will create the session and redirect to the success page and the logout will destroy the session and then redirect to the login page.
+The login endpoint will create the session and redirect to the success page and the logout will destroy the session and then redirect to the login page.
+
+The `/oauth2/refresh` will give the following response if a new token is generated:
+
+```json
+{
+  "message": "New token generated",
+  "code": 200001,
+  "content": {
+    "accessToken": "new token"
+  }
+}
+```
 
 ## Start SPA server
 

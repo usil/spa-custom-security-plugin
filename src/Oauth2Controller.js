@@ -137,7 +137,7 @@ class Oauth2Controller {
           responseHeader: error.response.headers,
         });
       }
-      return res.json({ message: error.message });
+      return res.status(500).json({ message: error.message, code: 500000 });
     }
   };
 
