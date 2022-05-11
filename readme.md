@@ -80,12 +80,14 @@ SECURITY_OAUTH2_MAX_SECONDS_ALLOWED_FOR_IDLE_USER=1000
 
 `WARNING` the `oauth2RefreshTokenBeforeExpirationTime` variable should be less than the `expiresIn` value of the token.
 
-## Added end points for oauth2
+## Added end-points for oauth2
 
 | Endpoint       | Method | Description         |
 | -------------- | ------ | ------------------- |
 | /oauth2/logout | GET    | Closes the session  |
 | /oauth2/login  | GET    | Creates the session |
+
+To use them use redirect, the login endpoint will create the session and redirect to the success page and the logout will destroy the session and then redirect to the login page.
 
 ## Start SPA server
 
