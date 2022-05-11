@@ -179,8 +179,11 @@ class Oauth2Controller {
 
       const completeRequestUrl = req.baseUrl + req.path;
 
-      const indexInPublicPages =
-        this.serverSettings.publicPages.indexOf(completeRequestUrl);
+      const indexInPublicPages = serverSettings.publicPages.findIndex(
+        (path) => {
+          return completeRequestUrl.startsWith(path);
+        }
+      );
 
       if (
         completeRequestUrl === this.serverSettings.loginPage &&
