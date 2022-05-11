@@ -96,7 +96,7 @@ class Oauth2Controller {
           });
         };
         await destroy$();
-        return res.json({
+        return res.status(403).json({
           message: "Session timeout due to idle time",
           code: 403001,
         });
