@@ -186,8 +186,8 @@ class Oauth2Controller {
       );
 
       if (
-        completeRequestUrl === this.serverSettings.loginPage &&
-        req.session.signedUserDetails
+        (completeRequestUrl === this.serverSettings.loginPage &&
+        req.session.signedUserDetails) && (this.serverSettings.loginPage !== this.serverSettings.successPage)
       ) {
         return res.redirect(this.serverSettings.successPage || "/");
       }
